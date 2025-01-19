@@ -1,65 +1,33 @@
-# C++ Project Template
+A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
 
-This repository serves as a template for new projects. Click the `Use this template` button above to create a new repository based on this template for your # Project Template
+Implement the Trie class:
 
-This repository serves as a template for new projects. Click the `Use this template` button above to create a new repository based on this template.
+Trie() Initializes the trie object.
+* void insert(String word) Inserts the string word into the trie.
+* boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+* boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+ 
 
-## Features
+Example 1:
 
-- CMake
-- Ninja
-- VSCode debugging configured
+Input:
+["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+[[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
 
-## Getting Started
+Output:
+[null, null, true, false, true, null, true]
 
-1. Clone your new repository:
-    ```bash
-    git clone https://github.com/yourusername/your-new-repo.git
-    cd your-new-repo
-    ```
+Explanation:
+Trie trie = new Trie();
+trie.insert("apple");
+trie.search("apple");   // return True
+trie.search("app");     // return False
+trie.startsWith("app"); // return True
+trie.insert("app");
+trie.search("app");     // return True
+ 
 
-2. Install dependencies:
-    ```bash
-    # Example for a Node.js project
-    npm install
-    ```
-
-3. Run the project:
-    ```bash
-    # Example for a Node.js project
-    npm start
-    ```
-
-## Contributing
-
-Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-
-## Getting Started
-
-1. Clone your new repository:
-    ```bash
-    git clone https://github.com/yourusername/your-new-repo.git
-    cd your-new-repo
-    ```
-
-2. Install dependencies:
-    ```bash
-    # Example for a Node.js project
-    npm install
-    ```
-
-3. Run the project:
-    ```bash
-    # Example for a Node.js project
-    npm start
-    ```
-
-## Contributing
-
-Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Constraints:
+1 <= word.length, prefix.length <= 2000
+word and prefix consist only of lowercase English letters.
+At most 3 * 104 calls in total will be made to insert, search, and startsWith.
