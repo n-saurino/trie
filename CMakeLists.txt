@@ -10,6 +10,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)  # Disable compiler-specific extensions
 set(BOOST_ROOT "/opt/homebrew/Cellar/boost/1.85.0")
 find_package(Boost 1.85.0 REQUIRED COMPONENTS system filesystem)
 
+# Link against Google Test
+find_package(GTest REQUIRED)
+
 if(Boost_FOUND)
     message(STATUS "Boost version: ${Boost_VERSION}")
     message(STATUS "Boost include dirs: ${Boost_INCLUDE_DIRS}")
@@ -18,11 +21,11 @@ else()
     message(FATAL_ERROR "Could not find Boost")
 endif()
 
-add_executable(main src/main.cpp)
+add_executable(main src/main.cpp src/TestTrie.cpp src/Trie.cpp)
 
 # Include Boost headers
-target_include_directories(main PRIVATE ${Boost_INCLUDE_DIRS})
+target_include_directories(main PRIVATE ${Boost_INCLUDE_DIRS} "${CMAKE_SOURCE_DIR}/include")
 
 # Link Boost libraries
-target_link_libraries(main PRIVATE ${Boost_LIBRARIES})
+target_link_libraries(main PRIVATE ${Boost_LIBRARIES} GTest::GTest GTest::Main pthread)
 
