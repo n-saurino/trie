@@ -13,6 +13,7 @@ Trie::~Trie(){
 
     while(!q.empty()){
         auto& curr_node{q.front()};    
+        q.pop_front();
         for(int i{0}; i < curr_node->children_.size(); ++i){
             if(curr_node->children_[i]){
                 q.push_back(curr_node->children_[i]);
@@ -52,6 +53,7 @@ bool Trie::Search(std::string_view word){
 // Returns true if there is a previously inserted string word that has the 
 // prefix prefix, and false otherwise.
 bool Trie::Prefix(std::string_view prefix){
+    if(prefix.size() == 0) return false;
     Node* curr_node{root_};
     for(auto c : prefix){
         if(!curr_node->children_[c - 'a']){

@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 20)  # Use C++17, you can change this to 11, 14, 20, etc.
 set(CMAKE_CXX_STANDARD_REQUIRED True)  # Ensure the compiler enforces the standard
 set(CMAKE_CXX_EXTENSIONS OFF)  # Disable compiler-specific extensions
 
+# Set build type to Debug
+set(CMAKE_BUILD_TYPE Debug)
+
 # Find Boost
 set(BOOST_ROOT "/opt/homebrew/Cellar/boost/1.85.0")
 find_package(Boost 1.85.0 REQUIRED COMPONENTS system filesystem)
