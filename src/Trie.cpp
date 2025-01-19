@@ -1,3 +1,4 @@
+#include <deque>
 #include "Trie.hpp"
 
 Trie::Trie(): root_(new Node()){
@@ -6,7 +7,19 @@ Trie::Trie(): root_(new Node()){
 }
 
 Trie::~Trie(){
-    
+    // need to do a graph traversal to deconstruct the Trie
+    std::deque<Node*> q{};
+    q.push_back(root_);
+
+    while(!q.empty()){
+        auto& curr_node{q.front()};    
+        for(int i{0}; i < curr_node->children_.size(); ++i){
+            if(curr_node->children_[i]){
+                q.push_back(curr_node->children_[i]);
+            }
+        }
+        delete curr_node;
+    }
 }
 
 //  Inserts the string word into the trie.
