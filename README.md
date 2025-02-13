@@ -1,33 +1,116 @@
-A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+# Trie Data Structure Implementation
 
-Implement the Trie class:
+A Trie (pronounced "try") is an efficient tree-like data structure for storing and retrieving strings. This implementation provides basic Trie operations including insertion, search, and prefix matching.
 
-Trie() Initializes the trie object.
-* void insert(String word) Inserts the string word into the trie.
-* boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
-* boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
- 
+## Features
 
-Example 1:
+- Initialize an empty Trie data structure
+- Insert new words into the Trie
+- Search for complete words in the Trie
+- Check if any word in the Trie starts with a given prefix
 
-Input:
-["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
-[[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+## API Reference
 
-Output:
-[null, null, true, false, true, null, true]
+### Constructor
 
-Explanation:
+```java
+Trie()
+```
+
+Initializes an empty Trie data structure.
+
+### Methods
+
+#### insert
+
+```java
+void insert(String word)
+```
+
+Inserts a new word into the Trie.
+
+**Parameters:**
+- `word`: The string to insert into the Trie
+
+**Example:**
+```java
 Trie trie = new Trie();
-trie.insert("apple");
-trie.search("apple");   // return True
-trie.search("app");     // return False
-trie.startsWith("app"); // return True
-trie.insert("app");
-trie.search("app");     // return True
- 
+trie.insert("hello");
+```
 
-Constraints:
-1 <= word.length, prefix.length <= 2000
-word and prefix consist only of lowercase English letters.
-At most 3 * 104 calls in total will be made to insert, search, and startsWith.
+#### search
+
+```java
+boolean search(String word)
+```
+
+Searches for a complete word in the Trie.
+
+**Parameters:**
+- `word`: The string to search for
+
+**Returns:**
+- `true` if the exact word exists in the Trie
+- `false` otherwise
+
+**Example:**
+```java
+Trie trie = new Trie();
+trie.insert("hello");
+trie.search("hello");  // returns true
+trie.search("hell");   // returns false
+```
+
+#### startsWith
+
+```java
+boolean startsWith(String prefix)
+```
+
+Checks if any word in the Trie starts with the given prefix.
+
+**Parameters:**
+- `prefix`: The prefix to search for
+
+**Returns:**
+- `true` if any word in the Trie starts with the given prefix
+- `false` otherwise
+
+**Example:**
+```java
+Trie trie = new Trie();
+trie.insert("hello");
+trie.startsWith("hel");   // returns true
+trie.startsWith("world"); // returns false
+```
+
+## Time Complexity
+
+- Insert: O(m), where m is the length of the word
+- Search: O(m), where m is the length of the word
+- StartsWith: O(m), where m is the length of the prefix
+
+## Space Complexity
+
+- O(N * M), where N is the total number of words and M is the average length of words
+
+## Usage Example
+
+```java
+Trie trie = new Trie();
+
+// Insert some words
+trie.insert("apple");
+trie.insert("app");
+trie.insert("apricot");
+
+// Search for words
+System.out.println(trie.search("apple"));    // true
+System.out.println(trie.search("app"));      // true
+System.out.println(trie.search("apricot"));  // true
+System.out.println(trie.search("apt"));      // false
+
+// Check prefixes
+System.out.println(trie.startsWith("app"));  // true
+System.out.println(trie.startsWith("apt"));  // false
+```
