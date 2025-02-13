@@ -1,4 +1,4 @@
-# Trie Data Structure Implementation
+# Implement a Trie
 
 A Trie (pronounced "try") is an efficient tree-like data structure for storing and retrieving strings. This implementation provides basic Trie operations including insertion, search, and prefix matching.
 
